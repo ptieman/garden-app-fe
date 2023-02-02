@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import JournalEntry from "./JournalEntry";
 import SeedList from "./SeedList";
+import SeedListPage from "./SeedListPage";
 import ToDoList from "./ToDoList";
 
 const HomePage = () => {
@@ -33,12 +34,14 @@ const HomePage = () => {
     }, []);
 
     return (
+
         <div>
         <h2>Welcome to Your Garden Planner</h2>
         <JournalEntry journaEntryData={journaEntryData}/>
         <SeedList seedListData={seedListData}/>
         <ToDoList toDoListData={toDoListData}/>
         </div>
+        
     );
 };
 

@@ -25,10 +25,9 @@ import HomePage from './components/HomePage';
 
 function App() {
   return (
-    <main>
-      {/* <h1> Presley </h1> */}
-      <HomePage></HomePage>
-    </main>
+      <main>
+        <HomePage/>
+      </main>
   )
 }
 
