@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
 import JournalEntry from "./JournalEntry";
 import SeedList from "./SeedList";
+import ToDoList from "./ToDoList";
 
 const HomePage = () => {
 
     const [journaEntryData, setJournalEntryData] = useState({})
     const [seedListData, setSeedListData] = useState({})
+    const [toDoListData, setToDoListData] = useState({})
 
     useEffect(() => {
         const latestJournalEntryData = {
@@ -21,8 +23,13 @@ const HomePage = () => {
             plant_spacing: "12 inches",
             sun_requirements: "full-sun",
             sow_method: "direct-sow"
+            };
+            setSeedListData(exampleSeedList);
+        const exampleToDoList = {
+            task_title: "First Task",
+            task_description: "Do this first"
         };
-        setSeedListData(exampleSeedList)
+        setToDoListData(exampleToDoList);
     }, []);
 
     return (
@@ -30,7 +37,7 @@ const HomePage = () => {
         <h2>Welcome to Your Garden Planner</h2>
         <JournalEntry journaEntryData={journaEntryData}/>
         <SeedList seedListData={seedListData}/>
-
+        <ToDoList toDoListData={toDoListData}/>
         </div>
     );
 };
