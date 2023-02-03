@@ -1,7 +1,18 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+
 // import propt
 
-const JournalEntry = ({journaEntryData}) => {
+const JournalEntryPage = () => {
+    const [journaEntryData, setJournalEntryData] = useState({})
+    useEffect(() => {
+        const latestJournalEntryData = {
+            journal_title: "My First Entry",
+            time_stamp: "February 1, 2023",
+            journal_body: "Today I did this"
+            };
+            setJournalEntryData(latestJournalEntryData);
+        }, []);
+
     return (
         <div className="journal-entry">
             <h3>{journaEntryData.journal_title}</h3>
@@ -13,4 +24,4 @@ const JournalEntry = ({journaEntryData}) => {
 };
 
 
-export default JournalEntry;
+export default JournalEntryPage;
