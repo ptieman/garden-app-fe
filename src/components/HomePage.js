@@ -5,6 +5,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+// import { useState } from 'react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 /* <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"/>
@@ -16,6 +19,7 @@ import Card from 'react-bootstrap/Card';
 // take off seedlist from homepage - only have to-do list and last journal entries
 
 const HomePage = () => {
+    const [date, setDate] = useState(new Date());
 
     const [journaEntryData, setJournalEntryData] = useState({})
     const [toDoListData, setToDoListData] = useState({})
@@ -86,6 +90,22 @@ const HomePage = () => {
                     </Card>
                 </Col>
             </Row> 
+            <div className='app'>
+            <div style={{
+            height: 500,
+            width: 500,
+            margin: 'auto'
+            }}>
+            <h1 className='text-center'>React Calendar</h1>
+            <div className='calendar-container'>
+                <Calendar onChange={setDate} value={date} />
+            </div>
+        <p className='text-center'>
+            <span className='bold'>Selected Date:</span>{' '}
+            {date.toDateString()}
+        </p>
+        </div>
+    </div>
         </Container>
         
     );
