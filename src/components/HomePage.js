@@ -1,11 +1,17 @@
 import React, {useEffect, useState} from "react";
 import JournalEntry from "./JournalEntry";
 import ToDoList from "./ToDoList";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
 
-<head>
+/* <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"/>
 
-</head>
+</head> */
+
+
 
 // take off seedlist from homepage - only have to-do list and last journal entries
 
@@ -29,11 +35,21 @@ const HomePage = () => {
     }, []);
 
     return (
+        <div className="container">
 
-        <div>
-        <h2>Welcome to Your Garden Planner</h2>
-        <JournalEntry journaEntryData={journaEntryData}/>
-        <ToDoList toDoListData={toDoListData}/>
+            <h2>Welcome to Your Garden Planner</h2>
+            <Row>
+                <Col>
+                    <Card className="front-card" style={{ width: '20rem' }}>
+                        <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
+                    </Card>
+                </Col>
+                <Col>
+                    <Card className="front-card" style={{ width: '20rem' }}>
+                        <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
+                    </Card>
+                </Col>
+            </Row> 
         </div>
         
     );
