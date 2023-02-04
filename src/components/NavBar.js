@@ -20,11 +20,13 @@ function Navigation() {
     <>
         <Navbar bg="dark" variant="dark">
             <Container>
-            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+            <Navbar.Brand href=""></Navbar.Brand>
             <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
+                <Nav.Link href="">Home</Nav.Link>
+                <Nav.Link href="/journal-entries">Journal Entries</Nav.Link>
+                <Nav.Link href="/to-do">To-Do List</Nav.Link>
+                <Nav.Link href="/seed-list">Seed List</Nav.Link>
+                <Nav.Link href="/plant-library">Plant Library</Nav.Link>
             </Nav>
             </Container>
         </Navbar>

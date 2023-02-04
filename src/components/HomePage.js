@@ -35,9 +35,9 @@ const HomePage = () => {
     }, []);
 
     return (
-        <div className="container">
+        <Container>
 
-            <h2>Welcome to Your Garden Planner</h2>
+            <h2 class='text-center'>Welcome to Your Garden Planner</h2>
             <Row>
                 <Col>
                     <Card className="front-card" style={{ width: '20rem' }}>
@@ -50,7 +50,43 @@ const HomePage = () => {
                     </Card>
                 </Col>
             </Row> 
-        </div>
+            <Row>
+                <Col>
+                    <Card className="front-card" style={{ width: '20rem' }}>
+                        <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
+                    </Card>
+                </Col>
+                <Col>
+                    <Card className="front-card" style={{ width: '20rem' }}>
+                        <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
+                    </Card>
+                </Col>
+            </Row> 
+            <Row>
+                <Col>
+                    <Card className="front-card" style={{ width: '20rem' }}>
+                        <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
+                    </Card>
+                </Col>
+                <Col>
+                    <Card className="front-card" style={{ width: '20rem' }}>
+                        <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
+                    </Card>
+                </Col>
+            </Row> 
+            <Row>
+                <Col>
+                    <Card className="front-card" style={{ width: '20rem' }}>
+                        <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
+                    </Card>
+                </Col>
+                <Col>
+                    <Card className="front-card" style={{ width: '20rem' }}>
+                        <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
+                    </Card>
+                </Col>
+            </Row> 
+        </Container>
         
     );
 };
