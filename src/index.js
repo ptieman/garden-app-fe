@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootswatch/dist/minty/bootstrap.min.css";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import JournalEntry from './components/JournalEntry';
 import SeedList from './components/SeedList';
 import ToDoList from './components/ToDoList';
 import Layout from './components/Layout';
 import HomePage from './components/HomePage';
-import { useState } from 'react';
-import 'semantic-ui-css/semantic.min.css'
+
 
 
 

@@ -4,17 +4,10 @@ import ToDoList from "./ToDoList";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-// import { useState } from 'react';
+import Card  from 'react-bootstrap/Card'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import Weather from './weather';
-
-
-/* <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"/>
-
-</head> */
+// import Weather from './weather';
 
 
 
@@ -25,9 +18,9 @@ const HomePage = () => {
 
     const [journaEntryData, setJournalEntryData] = useState({})
     const [toDoListData, setToDoListData] = useState({})
-    const [lat, setLat] = useState([]);
-    const [long, setLong] = useState([]);
-    const [data, setData] = useState([]);
+    // const [lat, setLat] = useState([]);
+    // const [long, setLong] = useState([]);
+    // const [data, setData] = useState([]);
     useEffect(() => {
         const latestJournalEntryData = {
             journal_title: "My First Entry",
@@ -39,70 +32,69 @@ const HomePage = () => {
             task_title: "First Task",
             task_description: "Do this first"
         };
-        setToDoListData(exampleToDoList);
-        const fetchData = async () => {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                setLat(position.coords.latitude);
-                setLong(position.coords.longitude);
-            });
-            await fetch(`${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
-            .then(res => res.json())
-            .then(result => {
-                setData(result)
-                console.log(result);
-            });
-            }
-            fetchData();
-    }, [lat, long]);
-
+        setToDoListData(exampleToDoList);}, []);
+    //     const fetchData = async () => {
+    //         navigator.geolocation.getCurrentPosition(function(position) {
+    //             setLat(position.coords.latitude);
+    //             setLong(position.coords.longitude);
+    //         });
+    //         await fetch(`${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`)
+    //         .then(res => res.json())
+    //         .then(result => {
+    //             setData(result)
+    //             console.log(result);
+    //         });
+    //         }
+    //         fetchData();
+    // }, [lat, long]);
     return (
         <Container>
 
-            <h2 class='text-center'>Welcome to Your Garden Planner</h2>
+            <h2 className='text-center'>Welcome to Your Garden Planner</h2>
             <Row>
                 <Col>
-                    <Card className="front-card" style={{ width: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
                         <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="front-card" style={{ width: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
                         <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
                     </Card>
                 </Col>
             </Row> 
             <Row>
                 <Col>
-                    <Card className="front-card" style={{ width: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
                         <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="front-card" style={{ width: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
                         <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
                     </Card>
                 </Col>
             </Row> 
             <Row>
                 <Col>
-                    <Card className="front-card" style={{ width: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
                         <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="front-card" style={{ width: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
                         <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
                     </Card>
                 </Col>
             </Row> 
             <Row>
                 <Col>
-                    <Card className="front-card" style={{ width: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
                         <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="front-card" style={{ width: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
                         <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
                     </Card>
                 </Col>
@@ -111,24 +103,24 @@ const HomePage = () => {
             <Col>
             <div className='app'>
             <div>
-            <h1 className='text-center'>React Calendar</h1>
+            <h1 className='text-left'>Calendar</h1>
             <div className='calendar-container'>
                 <Calendar onChange={setDate} value={date} />
             </div>
-            <p className='text-center'>
+            <p className='text-left'>
                 <span className='bold'>Selected Date:</span>{' '}
                 {date.toDateString()}
             </p>
             </div>
             </div>
             </Col>
-            <Col>
+            {/* <Col>
             {(typeof data.main != 'undefined') ? (
                 <Weather weatherData={data}/>
             ): (
             <div/>
             )}
-            </Col>
+            </Col> */}
                 </Row>
         </Container>
         
