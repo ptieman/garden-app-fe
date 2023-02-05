@@ -19,7 +19,7 @@ code {
 }
 
 .react-calendar { 
-  width: 400px;
+  width: 500px;
   max-width: 100%;
   background-color: #fff;
   color: #222;
@@ -108,3 +108,6 @@ code {
  }
 
 
+ .striked {
+  text-decoration: line-through;
+}

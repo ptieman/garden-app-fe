@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Card  from 'react-bootstrap/Card'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import WeatherWidget from "./weather";
 // import Weather from './weather';
 
 
@@ -63,32 +64,11 @@ const HomePage = () => {
                     </Card>
                 </Col>
             </Row> 
-            {/* <Row>
-                <Col>
-                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
-                        <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
-                    </Card>
-                </Col>
-            </Row> 
-            <Row>
-                <Col>
-                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
-                        <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
-                    </Card>
-                </Col>
-            </Row> 
-            <Row>
-                <Col>
-                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
-                        <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
-                    </Card>
-                </Col>
-            </Row>  */}
             <Row>
             <Col>
             <div className='app'>
             <div>
-            <h1 className='text-left'>Calendar</h1>
+            {/* <h4 className='text-left'>Calendar</h4> */}
             <div className='calendar-container'>
                 <Calendar onChange={setDate} value={date} />
             </div>
@@ -99,6 +79,7 @@ const HomePage = () => {
             </div>
             </div>
             </Col>
+                <WeatherWidget />
             {/* <Col>
             {(typeof data.main != 'undefined') ? (
                 <Weather weatherData={data}/>
