@@ -9,8 +9,7 @@ import ToDoList from './components/ToDoList';
 import Layout from './components/Layout';
 import HomePage from './components/HomePage';
 import { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import 'semantic-ui-css/semantic.min.css'
 
 
 
