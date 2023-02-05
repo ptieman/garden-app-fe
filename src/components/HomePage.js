@@ -53,13 +53,20 @@ const HomePage = () => {
             <h2 className='text-center'>Welcome to Your Garden Planner</h2>
             <Row>
                 <Col>
-                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '30rem', height: '20rem' }}>
                         <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '30em', height: '20rem' }}>
                         <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
+                    </Card>
+                </Col>
+            </Row> 
+            {/* <Row>
+                <Col>
+                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
+                        <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
                     </Card>
                 </Col>
             </Row> 
@@ -69,11 +76,6 @@ const HomePage = () => {
                         <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
                     </Card>
                 </Col>
-                <Col>
-                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
-                        <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
-                    </Card>
-                </Col>
             </Row> 
             <Row>
                 <Col>
@@ -81,24 +83,7 @@ const HomePage = () => {
                         <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
                     </Card>
                 </Col>
-                <Col>
-                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
-                        <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
-                    </Card>
-                </Col>
-            </Row> 
-            <Row>
-                <Col>
-                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
-                        <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card className="card border-info mb-3" style={{ width: '20rem' }}>
-                        <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
-                    </Card>
-                </Col>
-            </Row> 
+            </Row>  */}
             <Row>
             <Col>
             <div className='app'>
