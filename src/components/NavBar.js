@@ -17,13 +17,13 @@ function Navigation() {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="/journal-entries">Journal</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="/to-do">To-Do</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="/seed-list">Seed List</a>
               </li>
               </ul>
               </div>
