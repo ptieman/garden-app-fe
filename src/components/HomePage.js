@@ -8,6 +8,8 @@ import Card from 'react-bootstrap/Card';
 // import { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+// import './weather'
+
 
 /* <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"/>
@@ -90,12 +92,10 @@ const HomePage = () => {
                     </Card>
                 </Col>
             </Row> 
+            <Row>
+            <Col>
             <div className='app'>
-            <div style={{
-            height: 500,
-            width: 500,
-            margin: 'auto'
-            }}>
+            <div>
             <h1 className='text-center'>React Calendar</h1>
             <div className='calendar-container'>
                 <Calendar onChange={setDate} value={date} />
@@ -106,6 +106,11 @@ const HomePage = () => {
         </p>
         </div>
     </div>
+            </Col>
+            <Col>
+                
+            </Col>
+                </Row>
         </Container>
         
     );
@@ -114,3 +119,10 @@ const HomePage = () => {
 
 
 export default HomePage;
+
+
+// style={{
+//     height: 500,
+//     width: 350,
+//     margin: 'auto'
+//     }}

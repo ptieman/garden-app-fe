@@ -10,7 +10,7 @@ import HomePage from './components/HomePage';
 function App() {
   return (
     <>
-      <HomePage style={{ height: '100vh', width: '100wh' }}/>
+      <HomePage/>
     </>
   )
 }
