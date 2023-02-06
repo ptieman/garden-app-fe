@@ -39,5 +39,3 @@ export default function App() {
     
   )
 }
-
-// add ternary to if on ceratin link show calendar
