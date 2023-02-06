@@ -1,4 +1,4 @@
- html, body {
+html, body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -114,3 +114,10 @@ code {
   text-decoration: line-through;
 }
 
+.form-group {
+  width: 500px
+}
+
+.seed-list {
+  background-color: #B0CAA7;
+}

@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Card from 'react-bootstrap/Card'
+import Form from 'react-bootstrap/Form'
 
 const SeedList = () => {
     return(
         <div>
-            <Card>
-            <form>
+            <Card style={{width: '500px', marginLeft: '100px', marginTop: '50px', marginBottom: '50px'}}>
+            <Form>
     <div class="form-group">
         <label for="seed-name">Seed Name</label>
         <input type="text" class="form-control" id="seed-name" placeholder="Enter seed name"/>
@@ -25,20 +26,20 @@ const SeedList = () => {
     <div class="form-group">
         <label for="sun-requirements">Sun Requirements</label>
         <select class="form-control" id="sun-requirements">
-        <option>Full-sun</option>
-        <option>Partial-shade</option>
-        <option>Shade</option>
+        <option>full-sun</option>
+        <option>partial-shade</option>
+        <option>shade</option>
         </select>
     </div>
     <div class="form-group">
         <label for="sow-method">Sow Method</label>
         <select class="form-control" id="sow-method">
-        <option>Start-indoors</option>
-        <option>Direct-sow</option>
+        <option>start-indoors</option>
+        <option>direct-sow</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary">Add Seed</button>
-    </form>
+    <button type="submit" class="btn btn-secondary" style={{marginTop: '20px'}}>Add Seed</button>
+    </Form>
             </Card>
         </div>
         
