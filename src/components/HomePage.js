@@ -54,12 +54,12 @@ const HomePage = () => {
             <h2 className='text-center'>Welcome to Your Garden Planner</h2>
             <Row>
                 <Col>
-                    <Card className="card border-info mb-3" style={{ width: '30rem', height: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '30rem', height: '20rem', marginLeft: '50px' }}>
                         <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="card border-info mb-3" style={{ width: '30em', height: '20rem' }}>
+                    <Card className="card border-info mb-3" style={{ width: '30em', height: '20rem', marginLeft: '50px' }}>
                         <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
                     </Card>
                 </Col>
@@ -70,7 +70,7 @@ const HomePage = () => {
             <div>
             {/* <h4 className='text-left'>Calendar</h4> */}
             <div className='calendar-container'>
-                <Calendar onChange={setDate} value={date} />
+                <Calendar onChange={setDate} value={date}  style={{ width: '30rem', marginLeft: '50px'}} />
             </div>
             <p className='text-left'>
                 <span className='bold'>Selected Date:</span>{' '}
@@ -79,15 +79,14 @@ const HomePage = () => {
             </div>
             </div>
             </Col>
-                <WeatherWidget />
-            {/* <Col>
-            {(typeof data.main != 'undefined') ? (
-                <Weather weatherData={data}/>
-            ): (
-            <div/>
-            )}
-            </Col> */}
-                </Row>
+            <Col>
+    <Card className="card border-info mb-3" style={{ width: '30rem', height: '17rem', justifyContent: 'center', marginTop: '50px', marginLeft: '50px' }}>
+        <Card.Body>
+            <WeatherWidget />
+        </Card.Body>
+    </Card>
+        </Col>
+        </Row>
         </Container>
         
     );

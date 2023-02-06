@@ -31,7 +31,7 @@ class WeatherWidget extends Component {
     const { weatherData } = this.state;
 
     return (
-      <Card>
+      <Card >
         <Card.Header>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="formCity">
