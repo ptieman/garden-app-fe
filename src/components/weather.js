@@ -42,7 +42,7 @@ class WeatherWidget extends Component {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Button type="submit" style={{marginTop: '0.5rem'}}>Get Weather</Button>
+            <button type="submit" class="btn btn-secondary" style={{marginTop: '0.5rem'}}>Get Weather</button>
           </Form>
         </Card.Header>
         <Card.Body>

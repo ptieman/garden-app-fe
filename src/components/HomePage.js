@@ -37,16 +37,17 @@ const HomePage = () => {
     
     return (
         <Container>
-
+            <Card class="card text-white bg-primary mb-3" style={{ marginLeft: '300px', marginTop: "20px", width: '700px'}}>
             <h2 className='text-center'>Welcome to Your Garden Planner</h2>
-            <Row>
+            </Card>
+            <Row style={{marginTop: '40px'}}>
                 <Col>
-                    <Card className="card border-info mb-3" style={{ width: '30rem', height: '20rem', marginLeft: '50px' }}>
-                        <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body>
+                    <Card className="card border-info mb-3" style={{ width: '30rem', height: '18rem', marginLeft: '50px'}}>
+                        {/* <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body> */}
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="card border-info mb-3" style={{ width: '30em', height: '20rem', marginLeft: '50px' }}>
+                    <Card className="card border-info mb-3" style={{ width: '30em', height: '18rem', marginLeft: '50px' }}>
                         <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
                     </Card>
                 </Col>

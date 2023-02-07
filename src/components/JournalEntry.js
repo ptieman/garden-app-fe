@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
 
 const JournalEntryPage = () => {
     const [journalEntries, setJournalEntries] = useState([]);
@@ -19,10 +23,11 @@ const JournalEntryPage = () => {
     };
 
     return (
-        <div className="journal-entry">
-        <div>
+        <Container>
+        <Row>
+            <Col style={{marginTop: '30px', marginRight: '50px'}}>
             {journalEntries.map((entry, index) => (
-            <Card key={index} >
+            <Card key={index} class="card border-info mb-3"  style={{marginTop: '20px'}} >
                 <Card.Header></Card.Header>
                 <Card.Body className="card-box">
                 <Card.Title>{entry.journal_title}</Card.Title>
@@ -31,24 +36,33 @@ const JournalEntryPage = () => {
                 </Card.Body>
             </Card>
             ))}
-        </div>
-        <div className="add-journal">
-            <input
+            </Col>
+            <Col style={{marginTop: '50px'}}>
+            {/* <Card style={{marginTop: '50px'}}> */}
+            <Form >
+                <Row><input
             type="text"
             placeholder="Journal Title"
             value={journalTitle}
             onChange={e => setJournalTitle(e.target.value)}
-            />
-            <textarea
+            /></Row>
+            <Row style={{marginTop: '20px'}}><textarea
             placeholder="Journal Body"
             value={journalBody}
             onChange={e => setJournalBody(e.target.value)}
-            />
-            <Button variant="secondary" onClick={addJournalEntry}>
+            rows="10"/>
+            </Row>
+            
+            
+            </Form>
+            {/* </Card> */}
+            
+            <Button  style={{marginTop: '10px'}}variant="info" onClick={addJournalEntry}>
             Add Entry
             </Button>
-        </div>
-        </div>
+            </Col>
+        </Row>
+        </Container>
     );
 };
 
