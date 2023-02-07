@@ -28,6 +28,9 @@ function Navigation() {
               <li class="nav-item">
                 <a class="nav-link" href="/sign-in">Sign In</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/plant-library">Plant Library</a>
+              </li>
               </ul>
               </div>
   </div>

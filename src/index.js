@@ -9,6 +9,7 @@ import ToDoList from './components/ToDoList';
 import Layout from './components/Layout';
 import HomePage from './components/HomePage';
 import SignIn from './components/sign-in';
+import PlantLibrary from './components/PlantLibrary';
 
 
 
@@ -33,6 +34,7 @@ export default function App() {
             <Route path='seed-list' element={<SeedList />}/>
             <Route path='to-do' element={<ToDoList />}/>
             <Route path='sign-in' element={<SignIn/>}></Route>
+            <Route path='plant-library' element={<PlantLibrary/>}></Route>
           </Route>
         </Routes>
     </BrowserRouter>
