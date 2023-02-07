@@ -25,6 +25,9 @@ function Navigation() {
               <li class="nav-item">
                 <a class="nav-link" href="/seed-list">Seed List</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/sign-in">Sign In</a>
+              </li>
               </ul>
               </div>
   </div>

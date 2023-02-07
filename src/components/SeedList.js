@@ -41,10 +41,10 @@ function SeedList() {
                     <Row>
                     <Col>
                     <Form onSubmit={handleSubmit} style={{width: '400px', marginTop: '20px'}}>
-                        <input type="text" class="form-control" id="seed-name" placeholder="Enter seed name" onChange={(e) => setFormData({...formData, seedName: e.target.value})} />
+                        <input type="text" class="form-control" id="seed-name" placeholder="Enter seed name" onChange={(e) => setFormData({...formData, seedName: e.target.value})}  value={formData.seedName}  />
                         <textarea class="form-control" id="seed-description" rows="3" onChange={(e) => setFormData({...formData, seedDescription: e.target.value})} />
-                        <input type="number" class="form-control" id="days-until-harvest" placeholder="Enter days until harvest" onChange={(e) => setFormData({...formData, daysUntilHarvest: e.target.value})} />
-                        <input type="text" class="form-control" id="plant-spacing" placeholder="Enter plant spacing" onChange={(e) => setFormData({...formData, plantSpacing: e.target.value})} />
+                        <input type="number" class="form-control" id="days-until-harvest" placeholder="Enter days until harvest" onChange={(e) => setFormData({...formData, daysUntilHarvest: e.target.value})} value={formData.daysUntilHarvest}/>
+                        <input type="text" class="form-control" id="plant-spacing" placeholder="Enter plant spacing" onChange={(e) => setFormData({...formData, plantSpacing: e.target.value})} value={formData.plantSpacing} />
                         <select
                         class="form-control"
                         id="sun-requirements"
@@ -52,7 +52,7 @@ function SeedList() {
                         onChange={(e) =>
                             setFormData({ ...formData, sunRequirements: e.target.value })
                         }
-                        >
+                        value={formData.sunRequirements}>
                         {/* <option></option> */}
                         <option>select sun requirement</option>
                         <option>full-sun</option>
@@ -66,7 +66,7 @@ function SeedList() {
                         onChange={(e) =>
                             setFormData({ ...formData, sowMethod: e.target.value })
                         }
-                        >
+                        value={formData.sowMethod}>
                         <option> select sow method</option>
                         <option>start-indoors</option>
                         <option>direct-sow</option>

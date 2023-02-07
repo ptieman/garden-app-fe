@@ -8,6 +8,7 @@ import SeedList from './components/SeedList';
 import ToDoList from './components/ToDoList';
 import Layout from './components/Layout';
 import HomePage from './components/HomePage';
+import SignIn from './components/sign-in';
 
 
 
@@ -31,6 +32,7 @@ export default function App() {
             <Route path="journal-entries" element={<JournalEntry />}/>
             <Route path='seed-list' element={<SeedList />}/>
             <Route path='to-do' element={<ToDoList />}/>
+            <Route path='sign-in' element={<SignIn/>}></Route>
           </Route>
         </Routes>
     </BrowserRouter>
