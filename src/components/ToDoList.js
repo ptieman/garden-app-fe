@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container'
 
 const TableList = () => {
     const [tasks, setTasks] = useState([]);
-    const [task, setTask] = useState({ task_title: '' });
+    const [task, setTask] = useState('');
   
     useEffect(() => {
       axios
@@ -35,6 +35,7 @@ const TableList = () => {
     return (
       <div>
         <table>
+            <Card>
           <thead>
             <tr>
               <th>Task Title</th>
@@ -47,6 +48,7 @@ const TableList = () => {
               </tr>
             ))}
           </tbody>
+          </Card>
         </table>
         <form onSubmit={handleSubmit}>
           <input
