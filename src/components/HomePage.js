@@ -8,32 +8,35 @@ import Card  from 'react-bootstrap/Card'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import WeatherWidget from "./weather";
-// import Weather from './weather';
+import axios from "axios"
 
 
-
-// take off seedlist from homepage - only have to-do list and last journal entries
 
 const HomePage = () => {
     const [date, setDate] = useState(new Date());
 
-    const [journaEntryData, setJournalEntryData] = useState({})
-    const [toDoListData, setToDoListData] = useState({})
-    // const [lat, setLat] = useState([]);
-    // const [long, setLong] = useState([]);
-    // const [data, setData] = useState([]);
+    const [journalEntryData, setJournalEntryData] = useState({
+        journal_title: '',
+        journal_body: '',
+        journal_time_stamp: ''
+    });
+    // const [toDoListData, setToDoListData] = useState({})
+    // const [loading, setLoading] = useState(true);
     useEffect(() => {
-        const latestJournalEntryData = {
-            journal_title: "My First Entry",
-            time_stamp: "February 1, 2023",
-            journal_body: "Today I did this"
-            };
-            setJournalEntryData(latestJournalEntryData);
-        const exampleToDoList = {
-            task_title: "First Task",
-            task_description: "Do this first"
-        };
-        setToDoListData(exampleToDoList);}, []);
+        axios
+            .get("http://localhost:8000/")
+            .then((res) => {
+                console.log(res.data);
+                setJournalEntryData(res.data.latest_journal_entry);
+            })
+            .catch((err) => console.error(err));
+        // axios 
+        //     .get("http://localhost:8000/")
+        //     .then((res) => {
+        //         console.log(res.data.to_do_list);
+        //         setToDoListData(res.data.to_do_list);
+        //     })
+    }, []);
     
     return (
         <Container>
@@ -42,13 +45,21 @@ const HomePage = () => {
             </Card>
             <Row style={{marginTop: '40px'}}>
                 <Col>
-                    <Card className="card border-info mb-3" style={{ width: '30rem', height: '18rem', marginLeft: '50px'}}>
-                        {/* <Card.Body><JournalEntry journaEntryData={journaEntryData}/></Card.Body> */}
+                <Card className="card border-info mb-3" style={{ width: '30rem', height: '18rem', marginLeft: '50px'}}>
+                        {journalEntryData ? (
+                            <>
+                                <Card.Header>{journalEntryData.journal_title}</Card.Header>
+                                <Card.Body>{journalEntryData.journal_body}</Card.Body>
+                                <Card.Footer>{journalEntryData.journal_time_stamp}</Card.Footer>
+                            </>
+                        ) : (
+                            <p>Loading...</p>
+                        )}
                     </Card>
                 </Col>
                 <Col>
                     <Card className="card border-info mb-3" style={{ width: '30em', height: '18rem', marginLeft: '50px' }}>
-                        <Card.Body><ToDoList toDoListData={toDoListData}/></Card.Body>
+                        <Card.Body><ToDoList/></Card.Body>
                     </Card>
                 </Col>
             </Row> 
@@ -56,7 +67,6 @@ const HomePage = () => {
             <Col>
             <div className='app'>
             <div>
-            {/* <h4 className='text-left'>Calendar</h4> */}
             <div className='calendar-container'>
                 <Calendar onChange={setDate} value={date}  style={{ width: '30rem', marginLeft: '50px'}} />
             </div>
