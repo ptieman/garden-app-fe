@@ -10,6 +10,7 @@ html, body {
 }
 
 
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -152,3 +153,7 @@ code {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+/* * {
+  background-color: #B0CAA7;
+} */
