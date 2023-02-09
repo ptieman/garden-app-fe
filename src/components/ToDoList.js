@@ -5,84 +5,161 @@ import Container from 'react-bootstrap/Container'
 // import List from 'react-bootstrap/List'
 
 
+const ToDoList = () => {
+  const [tasks, setTasks] = useState([]);
+  const [taskTitle, setTaskTitle] = useState("");
 
-const TableList = () => {
-    const [tasks, setTasks] = useState([]);
-    const [task, setTask] = useState('');
-  
-    useEffect(() => {
-      axios
-        .get("http://localhost:8000/tasks/")
-        .then((res) => {
-          console.log(res.data);
-          setTasks(res.data.tasks);
-        })
-        .catch((err) => console.error(err));
-    }, []);
-    
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      axios
-        .post("http://localhost:8000/tasks/", { task_title: task.task_title })
-        .then((res) => {
-          console.log(res.data);
-          setTasks([...tasks, { task_title: task.task_title }]);
-          setTask({ task_title: '' });
-        })
-        .catch((err) => console.error(err));
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const { data } = await axios.get("http://localhost:8000/tasks/");
+      setTasks(data);
     };
-    console.log(task.id)
-    const handleDelete = async id => {
-      
-          await axios.delete(`http://localhost:8000/tasks/${id}/`);
-          
-          // await axios.delete(`http://localhost:8000/tasks/${id}/`);
-          setTasks(tasks.filter((task) => task.id !== id));
-        };
-  
-    return (
-      <div>
-        <table>
-            <Card>
-          <thead>
-            <tr>
-              <th>Task Title</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tasks.map((task) => (
-              <tr key={task.task_title}>
-                <td>{task.task_title}</td>
-                <button class="btn btn-outline-secondary" type="submit" onClick={() => handleDelete(task.id)}>Delete Task</button>
-              </tr>
-            ))}
-          </tbody>
-          </Card>
-        </table>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            
-            onChange={(e) => setTask({ task_title: e.target.value })} value={tasks.task_title}
-          />
-          <button type="submit" class="btn btn-secondary">Add Task</button>
-          {/* <button type="submit">Delete Task</button> */}
-        </form>
-      </div>
-    );
+
+    fetchTasks();
+  }, []);
+
+  const handleTaskTitleChange = (e) => {
+    setTaskTitle(e.target.value);
   };
 
-        
-const TodoList = () => {
-    
-    return (
-        <Container>
-            <TableList></TableList>
-        </Container>
-    );
-                }
+  const handleAddTask = async (e) => {
+    e.preventDefault();
 
-export default TodoList
+    const response = await axios.post("http://localhost:8000/tasks/", {
+      task_title: taskTitle,
+    });
+
+    setTasks([...tasks, response.data]);
+    setTaskTitle("");
+  };
+
+  const handleDeleteTask = async (id) => {
+    await axios.delete(`http://localhost:8000/tasks/${id}/`);
+
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  return (
+    <div>
+      <h1>To-Do List</h1>
+      <form onSubmit={handleAddTask}>
+        <input
+          type="text"
+          value={taskTitle}
+          onChange={handleTaskTitleChange}
+        />
+        <button type="submit">Add Task</button>
+      </form>
+      <ul>
+        {tasks.map((task) => (
+          <li key={task.id}>
+            {task.task_title}{" "}
+            <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ToDoList;
+
+
+// const TableList = () => {
+//     const [tasks, setTasks] = useState([]);
+//     const [task, setTask] = useState({task_title: ''});
+  
+//     useEffect(() => {
+//       axios
+//         .get("http://localhost:8000/tasks/")
+//         .then((res) => {
+//           console.log(res.data);
+//           setTasks(res.data.tasks);
+//         })
+//         .catch((err) => console.error(err));
+//     }, []);
+    
+//     const handleSubmit = (e) => {
+//       e.preventDefault();
+//       axios
+//         .post("http://localhost:8000/tasks/", { task_title: task.task_title })
+//         .then((res) => {
+//           console.log(res.data);
+//           setTasks([...tasks, { task_title: task.task_title }]);
+//           setTask({ task_title: '' });
+//         })
+//         .catch((err) => console.error(err));
+//     };
+
+
+//     const handleDelete = (id) => {
+//       console.log("Deleting task with id:", id);
+//       axios
+//         .delete(`http://localhost:8000/tasks/${id}`)
+//         .then((res) => {
+//           console.log(res.data);
+
+//           setTasks(tasks.filter(task => task.id !== id));
+//         })
+//         .catch((err) => console.error(err));
+//     };
+
+  //   const handleDelete =  id => {
+      
+  //     axios.delete(`http://localhost:8000/tasks/${id}/`)
+  //     .then(() => {
+  //       setTasks(tasks.filter(task => task.id !== id));
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+  // };
+
+  //       console.log(task.id)
+  
+//     return (
+//       <div>
+//         <table>
+//             <Card>
+//           <thead>
+//             <tr>
+//               <th>Task Title</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {tasks.map((task) => (
+//               <tr key={task.task_title}>
+//                 <td>{task.task_title}</td>
+//                 <button class="btn btn-outline-secondary" type="submit" onClick={() => handleDelete(task.id)}>Delete Task</button>
+//               </tr>
+//             ))}
+//           </tbody>
+//           </Card>
+//         </table>
+//         <form onSubmit={handleSubmit}>
+//         <input
+//   type="text"
+//   onChange={(e) => setTask({ task_title: e.target.value })}
+//   value={task.task_title}
+// />
+//           <button type="submit" class="btn btn-secondary">Add Task</button>
+//           {/* <button type="submit">Delete Task</button> */}
+//         </form>
+//       </div>
+//     );
+//   };
+
+        
+// const TodoList = () => {
+    
+//     return (
+//         <Container>
+//             <TableList></TableList>
+//         </Container>
+//     );
+//                 }
+
+// export default TodoList
 
 //   const [todos, setTodos] = useState([]);
 //   const [newTodo, setNewTodo] = useState({task_title: ""});
