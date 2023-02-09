@@ -48,10 +48,10 @@ const JournalEntryPage = () => {
 
                         <Form.Group controlId="formJournalBody">
                             <Form.Label>Journal Body</Form.Label>
-                            <Form.Control type="text" placeholder="Enter journal body" value={journalBody} onChange={e => setJournalBody(e.target.value)} />
+                            <Form.Control type="textfield" placeholder="Enter journal body" value={journalBody} onChange={e => setJournalBody(e.target.value)} />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit">
+                        <Button variant="secondary" type="submit">
                             Add Journal Entry
                         </Button>
                     </Form>

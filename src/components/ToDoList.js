@@ -31,6 +31,14 @@ const TableList = () => {
         })
         .catch((err) => console.error(err));
     };
+    console.log(task.id)
+    const handleDelete = async id => {
+      
+          await axios.delete(`http://localhost:8000/tasks/${id}/`);
+          
+          // await axios.delete(`http://localhost:8000/tasks/${id}/`);
+          setTasks(tasks.filter((task) => task.id !== id));
+        };
   
     return (
       <div>
@@ -45,6 +53,7 @@ const TableList = () => {
             {tasks.map((task) => (
               <tr key={task.task_title}>
                 <td>{task.task_title}</td>
+                <button class="btn btn-outline-secondary" type="submit" onClick={() => handleDelete(task.id)}>Delete Task</button>
               </tr>
             ))}
           </tbody>
@@ -56,7 +65,8 @@ const TableList = () => {
             
             onChange={(e) => setTask({ task_title: e.target.value })} value={tasks.task_title}
           />
-          <button type="submit">Add Task</button>
+          <button type="submit" class="btn btn-secondary">Add Task</button>
+          {/* <button type="submit">Delete Task</button> */}
         </form>
       </div>
     );
