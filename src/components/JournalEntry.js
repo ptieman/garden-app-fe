@@ -6,15 +6,41 @@ const JournalEntryPage = () => {
     const [journalEntries, setJournalEntries] = useState([]);
     const [journalTitle, setJournalTitle] = useState("");
     const [journalBody, setJournalBody] = useState("");
+    // const [journalTimeStamp, setJournalTimeStamp] = useState("")
+
 
     useEffect(() => {
-        axios
-            .get("http://localhost:8000/journal/")
-            .then((res) => {
-                setJournalEntries(res.data.journals);
-            })
-            .catch((err) => console.error(err));
+        const fetchEntries = async () => {
+            const {data} = await axios.get("http://localhost:8000/journal/");
+            setJournalEntries(data);
+        };
+
+        fetchEntries();
     }, []);
+    // useEffect(() => {
+    //     axios
+    //         .get("http://localhost:8000/journal/")
+    //         .then((res) => {
+    //             setJournalEntries(res.data.journals);
+    //         })
+    //         .catch((err) => console.error(err));
+    // }, []);
+
+    // const handleAddEntry = async (e) => {
+    //     e.preventDefault();
+
+    //     const response = await axios.post("http://localhost:8000/journal/", {
+    //         journal_title: journalTitle,
+    //         journal_body: journalBody,
+    //         // journal_time_stamp: journalTimeStamp,
+    // });
+    //     setJournalEntries([...journalEntries, response.data]);
+    //     setJournalTitle("");
+    //     setJournalBody("");
+    //     // setJournalTimeStamp("")
+
+    //     };
+    
     const addJournalEntry = (e) => {
         e.preventDefault();
         axios
@@ -26,16 +52,23 @@ const JournalEntryPage = () => {
             })
             .catch((err) => console.error(err));
     };
+
+    const handleDeleteJournal = async (id) => {
+        await axios.delete(`http://localhost:8000/journal/${id}/`);
+        setJournalEntries(journalEntries.filter((entry) => entry.id !== id));
+    };
+
     return (
         <Container>
             <Row>
                 <Col>
-                    {journalEntries && journalEntries.map((entry) => (
+                    {journalEntries.map((entry) => (
                         <Card key={entry.id} className="card border-info mb-3" style={{ width: '30rem', height: '18rem', marginLeft: '50px'}}>
                             <Card.Body>
                                 <Card.Title>{entry.journal_title}</Card.Title>
                                 <Card.Text>{entry.journal_body}</Card.Text>
                             </Card.Body>
+                            <button onClick={() => handleDeleteJournal(entry.id)}>Delete</button>
                         </Card>
                     ))}
                 </Col>
