@@ -94,7 +94,7 @@ const SeedList = () => {
               />
             </div>
             <div>
-              <label htmlFor="seedDescription">Seed Description:</label>
+              <label htmlFor="seedDescription">Description:</label>
               <input
                 type="text"
                 id="seedDescription"
@@ -103,7 +103,7 @@ const SeedList = () => {
               />
             </div>
             <div>
-              <label htmlFor="daysTillHarvest">Days till Harvest:</label>
+              <label htmlFor="daysTillHarvest">Harvest Time:</label>
               <input
                 type="text"
                 id="daysTillHarvest"

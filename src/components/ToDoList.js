@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import SupplyList from './SupplyList';
 // import List from 'react-bootstrap/List'
 
 
@@ -56,25 +57,21 @@ const ToDoList = () => {
       </form>
       <Card class="card border-primary mb-3" style={{width: '300px'}}>
         {tasks.map((task) => (
-          <li key={task.id}>
+          <ul class="list-group">
+          < li class="list-group-item d-flex justify-content-between align-items-center" key={task.id}>
             {task.task_title}{" "}
             <button class="btn btn-outline-success" onClick={() => handleDeleteTask(task.id)}>Done</button>
           </li>
+          </ul>
         ))}
       </Card>
     </Col>
     <Col>
     <h3> Supplies List</h3>
-    <form >
-        <input
-          type="text"
-        />
-        <button class="btn btn-secondary" type="submit">Add Supply</button>
-      </form>
-      <Card class="card border-primary mb-3" style={{width: '300px'}}>
-        <Card.Header> Supplies List Here</Card.Header>
-        <Card.Body>Supplies go here</Card.Body>
-      </Card>
+          <SupplyList/>
+      {/* <Card class="card border-primary mb-3" style={{width: '300px'}}>
+        <SupplyList/>
+      </Card> */}
     </Col>
     </Row>
     </Container>

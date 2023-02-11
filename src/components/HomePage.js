@@ -77,9 +77,11 @@ const HomePage = () => {
                     {toDoListData.length > 0 ? (
                             <>
                                 {toDoListData.map((task, index) => (
-                                    <Card.Body key={index}> {task.task_title}
+                                    <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center" key={index}> {task.task_title}
                                     <button class="btn btn-outline-success" onClick={() => deleteTask(task.id)}>Done</button>
-                                    </Card.Body>
+                                    </li>
+                                    </ul>
                                 ))}
                             </>
                         ): (
