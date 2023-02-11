@@ -58,7 +58,7 @@ const ToDoList = () => {
         {tasks.map((task) => (
           <li key={task.id}>
             {task.task_title}{" "}
-            <button class="btn btn-outline-secondary" onClick={() => handleDeleteTask(task.id)}>Delete</button>
+            <button class="btn btn-outline-success" onClick={() => handleDeleteTask(task.id)}>Done</button>
           </li>
         ))}
       </Card>

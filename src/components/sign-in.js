@@ -1,9 +1,23 @@
 
 import React from "react"
+import { useNavigate } from 'react-router-dom';
 
-
+  
 // when button is pressed - go to homepage
 function SignIn() {
+
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = '/home';
+    navigate(path);
+  }
+  // const history = useHistory();
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   // Code to handle the sign in logic here
+  //   history.push('/home');
+  // };
     return (
 
     <form class="form-signin">
@@ -18,7 +32,7 @@ function SignIn() {
       <input type="checkbox" value="remember-me"/> Remember me
     </label>
   </div>
-  <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
+  <button onClick={routeChange} class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
   <p class="mt-5 mb-3 text-muted">© 2017-2022</p>
 </form>
     )

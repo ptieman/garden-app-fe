@@ -4,8 +4,8 @@ import axios from 'axios';
 
 const JournalEntryPage = () => {
     const [journalEntries, setJournalEntries] = useState([]);
-    const [journalTitle, setJournalTitle] = useState("");
-    const [journalBody, setJournalBody] = useState("");
+    const [journalTitle, setJournalTitle] = useState();
+    const [journalBody, setJournalBody] = useState();
     // const [journalTimeStamp, setJournalTimeStamp] = useState("")
 
 
@@ -62,8 +62,8 @@ const JournalEntryPage = () => {
                     {journalEntries.map((entry) => (
                         <Card key={entry.id} className="card border-info mb-3" style={{ width: '30rem', height: '18rem', marginLeft: '50px'}}>
                             <Card.Body>
-                                <Card.Title>{entry.journal_title}{" "}</Card.Title>
-                                <Card.Text>{entry.journal_body}{" "}</Card.Text>
+                                <Card.Title>{entry.journal_title}</Card.Title>
+                                <Card.Text>{entry.journal_body}</Card.Text>
                             </Card.Body>
                             <button class="btn btn-secondary" onClick={() => handleDeleteJournal(entry.id)}>Delete</button>
                         </Card>

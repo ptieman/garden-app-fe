@@ -12,7 +12,7 @@ function Navigation() {
           <div class="collapse navbar-collapse" id="navbarColor03">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="/">Home
+                <a class="nav-link active" href="/home">Home
                   <span class="visually-hidden">(current)</span>
                 </a>
               </li>
@@ -25,9 +25,9 @@ function Navigation() {
               <li class="nav-item">
                 <a class="nav-link" href="/seed-list">Seed List</a>
               </li>
-              <li class="nav-item">
+              {/* <li class="nav-item">
                 <a class="nav-link" href="/sign-in">Sign In</a>
-              </li>
+              </li> */}
               <li class="nav-item">
                 <a class="nav-link" href="/plant-library">Plant Library</a>
               </li>

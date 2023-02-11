@@ -28,12 +28,14 @@ export default function App() {
     <div className='bg-custom'>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />}/>
+          <Route path="/" element={<SignIn/>}></Route>
+            <Route path="/" element={<Layout />}>
+            <Route path="/home" element={<HomePage/>}></Route>
+              {/* <Route index element={<HomePage />}/> */}
             <Route path="journal-entries" element={<JournalEntry />}/>
             <Route path='seed-list' element={<SeedList />}/>
             <Route path='to-do' element={<ToDoList />}/>
-            <Route path='sign-in' element={<SignIn/>}></Route>
+            {/* <Route path='sign-in' element={<SignIn/>}></Route> */}
             <Route path='plant-library' element={<PlantLibrary/>}></Route>
           </Route>
         </Routes>

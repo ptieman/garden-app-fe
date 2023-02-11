@@ -20,7 +20,7 @@ const HomePage = () => {
         journal_body: '',
         journal_time_stamp: ''
     });
-    // const [toDoListData, setToDoListData] = useState({})
+    const [toDoListData, setToDoListData] = useState([]);
     // const [loading, setLoading] = useState(true);
     useEffect(() => {
         axios
@@ -30,13 +30,28 @@ const HomePage = () => {
                 setJournalEntryData(res.data.latest_journal_entry);
             })
             .catch((err) => console.error(err));
-        // axios 
-        //     .get("http://localhost:8000/")
-        //     .then((res) => {
-        //         console.log(res.data.to_do_list);
-        //         setToDoListData(res.data.to_do_list);
-        //     })
+            axios 
+            .get("http://localhost:8000/")
+            .then((res) => {
+                console.log(res.data);
+                if (res.data.latest_todo_list) {
+                    console.log(res.data.latest_todo_list.slice(-5));
+                    setToDoListData(res.data.latest_todo_list.slice(-5));
+                }
+            })
+            .catch((err) => console.error(err));
     }, []);
+
+    const deleteTask = (id) => {
+        axios
+            .delete(`http://localhost:8000/tasks/${id}`)
+            .then((res) => {
+                console.log(res.data);
+                setToDoListData(toDoListData.filter((task) => task.id !== id));
+            })
+            .catch((err) => console.error(err));
+    };
+
     
     return (
         <Container>
@@ -59,7 +74,17 @@ const HomePage = () => {
                 </Col>
                 <Col>
                     <Card className="card border-info mb-3" style={{ width: '30em', height: '18rem', marginLeft: '50px' }}>
-                        <Card.Body></Card.Body>
+                    {toDoListData.length > 0 ? (
+                            <>
+                                {toDoListData.map((task, index) => (
+                                    <Card.Body key={index}> {task.task_title}
+                                    <button class="btn btn-outline-success" onClick={() => deleteTask(task.id)}>Done</button>
+                                    </Card.Body>
+                                ))}
+                            </>
+                        ): (
+                            <p>Loading...</p>
+                        )}
                     </Card>
                 </Col>
             </Row> 
