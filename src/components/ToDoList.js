@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 // import List from 'react-bootstrap/List'
 
 
@@ -40,25 +42,42 @@ const ToDoList = () => {
   };
 
   return (
-    <div>
-      <h1>To-Do List</h1>
+    <Container>
+      <Row>
+    <Col style={{marginLeft: '200px'}}>
+      <h3>To-Do List</h3>
       <form onSubmit={handleAddTask}>
         <input
           type="text"
           value={taskTitle}
           onChange={handleTaskTitleChange}
         />
-        <button type="submit">Add Task</button>
+        <button class="btn btn-secondary" type="submit">Add Task</button>
       </form>
-      <ul>
+      <Card class="card border-primary mb-3" style={{width: '300px'}}>
         {tasks.map((task) => (
           <li key={task.id}>
             {task.task_title}{" "}
-            <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+            <button class="btn btn-outline-secondary" onClick={() => handleDeleteTask(task.id)}>Delete</button>
           </li>
         ))}
-      </ul>
-    </div>
+      </Card>
+    </Col>
+    <Col>
+    <h3> Supplies List</h3>
+    <form >
+        <input
+          type="text"
+        />
+        <button class="btn btn-secondary" type="submit">Add Supply</button>
+      </form>
+      <Card class="card border-primary mb-3" style={{width: '300px'}}>
+        <Card.Header> Supplies List Here</Card.Header>
+        <Card.Body>Supplies go here</Card.Body>
+      </Card>
+    </Col>
+    </Row>
+    </Container>
   );
 };
 

@@ -17,41 +17,38 @@ const JournalEntryPage = () => {
 
         fetchEntries();
     }, []);
-    // useEffect(() => {
+   
+    const handleEntryTitleChange = (e) => {
+        setJournalTitle(e.target.value);
+    }
+
+    const handleEntryBodyChange = (e) => {
+        setJournalBody(e.target.value)
+    };
+
+    const addJournalEntry = async (e) => {
+        e.preventDefault();
+
+        const response = await axios.post("http://localhost:8000/journal/", {
+            journal_title: journalTitle,
+            journal_body: journalBody
+        });
+        setJournalEntries([...journalEntries, response.data]);
+        setJournalTitle("");
+        setJournalBody("");
+    };
+    
+    // const addJournalEntry = (e) => {
+    //     e.preventDefault();
     //     axios
-    //         .get("http://localhost:8000/journal/")
+    //         .post("http://localhost:8000/journal/", {journal_title: journalTitle, journal_body: journalBody})
     //         .then((res) => {
-    //             setJournalEntries(res.data.journals);
+    //             setJournalEntries([...journalEntries, {journal_title : journalTitle, journal_body: journalBody}]);
+    //             setJournalTitle("");
+    //             setJournalBody("");
     //         })
     //         .catch((err) => console.error(err));
-    // }, []);
-
-    // const handleAddEntry = async (e) => {
-    //     e.preventDefault();
-
-    //     const response = await axios.post("http://localhost:8000/journal/", {
-    //         journal_title: journalTitle,
-    //         journal_body: journalBody,
-    //         // journal_time_stamp: journalTimeStamp,
-    // });
-    //     setJournalEntries([...journalEntries, response.data]);
-    //     setJournalTitle("");
-    //     setJournalBody("");
-    //     // setJournalTimeStamp("")
-
-    //     };
-    
-    const addJournalEntry = (e) => {
-        e.preventDefault();
-        axios
-            .post("http://localhost:8000/journal/", {journal_title: journalTitle, journal_body: journalBody})
-            .then((res) => {
-                setJournalEntries([...journalEntries, {journal_title : journalTitle, journal_body: journalBody}]);
-                setJournalTitle("");
-                setJournalBody("");
-            })
-            .catch((err) => console.error(err));
-    };
+    // };
 
     const handleDeleteJournal = async (id) => {
         await axios.delete(`http://localhost:8000/journal/${id}/`);
@@ -60,15 +57,15 @@ const JournalEntryPage = () => {
 
     return (
         <Container>
-            <Row>
+            <Row style={{marginTop: '50px'}}>
                 <Col>
                     {journalEntries.map((entry) => (
                         <Card key={entry.id} className="card border-info mb-3" style={{ width: '30rem', height: '18rem', marginLeft: '50px'}}>
                             <Card.Body>
-                                <Card.Title>{entry.journal_title}</Card.Title>
-                                <Card.Text>{entry.journal_body}</Card.Text>
+                                <Card.Title>{entry.journal_title}{" "}</Card.Title>
+                                <Card.Text>{entry.journal_body}{" "}</Card.Text>
                             </Card.Body>
-                            <button onClick={() => handleDeleteJournal(entry.id)}>Delete</button>
+                            <button class="btn btn-secondary" onClick={() => handleDeleteJournal(entry.id)}>Delete</button>
                         </Card>
                     ))}
                 </Col>
@@ -76,12 +73,12 @@ const JournalEntryPage = () => {
                     <Form onSubmit={addJournalEntry}>
                         <Form.Group controlId="formJournalTitle">
                             <Form.Label>Journal Title</Form.Label>
-                            <Form.Control type="text" placeholder="Enter journal title" value={journalTitle} onChange={e => setJournalTitle(e.target.value)} />
+                            <Form.Control type="text" placeholder="Enter journal title" onChange={handleEntryTitleChange} />
                         </Form.Group>
 
                         <Form.Group controlId="formJournalBody">
                             <Form.Label>Journal Body</Form.Label>
-                            <Form.Control type="textfield" placeholder="Enter journal body" value={journalBody} onChange={e => setJournalBody(e.target.value)} />
+                            <Form.Control type="textfield" placeholder="Enter journal body" onChange={handleEntryBodyChange} />
                         </Form.Group>
 
                         <Button variant="secondary" type="submit">

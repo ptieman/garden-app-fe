@@ -3,11 +3,31 @@ import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 import { Carousel } from 'react-bootstrap';
+import { useState } from "react";
 
 
 function PlantLibrary() {
+  const [zipcode, setZipcode] = useState("");
+  const [zone, setZone] = useState('');
 
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const url = `https://plant-hardiness-zone.p.rapidapi.com/zipcodes/${zipcode}`;
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '820a4714a4msh2612354a797625fp17e673jsn1c6fc95976c8',
+        'X-RapidAPI-Host': 'plant-hardiness-zone.p.rapidapi.com'
+      }
+    };
+    const response = await fetch(url, options);
+    const data = await response.json();
+    setZone(data.hardiness_zone);
+  };
     // state = {
     //     zipcode: "",
     //     plantzone: {}
@@ -28,7 +48,7 @@ function PlantLibrary() {
     return (
         <div>
         <Row>
-            <h3 style={{textAlign: 'center'}}>Plant Library</h3>
+        <h3 style={{textAlign: 'center'}}> Plant Library</h3>
         </Row>
         <Row>
             <Col>
@@ -64,17 +84,19 @@ function PlantLibrary() {
       </Col>
       <Col>
       <Card style={{ marginRight: '200px', marginTop: '150px'}}>
-            {/* add onsSubmit to handleSubmit */}
-            <Form>
-                <Form.Label>Plant Hardiness Zone</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Enter zipcode"
-                    // add onChange to handleChange
-                    >
-                </Form.Control>
-                <button type="submit" class="btn btn-secondary">Get Hardiness Zone</button>
-                </Form>
+      <Form onSubmit={handleSubmit}>
+      <Form.Group controlId="formZipcode">
+        <Form.Label>Zipcode</Form.Label>
+        <Form.Control type="text" placeholder="Enter zipcode" onChange={e => setZipcode(e.target.value)} />
+      </Form.Group>
+
+      <Card.Body>
+        <p>Your Hardiness Zone Is: {zone}</p>
+      </Card.Body>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
                 </Card>
       </Col>
       </Row>

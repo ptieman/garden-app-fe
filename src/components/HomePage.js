@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import JournalEntry from "./JournalEntry";
-import ToDoList from "./ToDoList";
+// import JournalEntry from "./JournalEntry";
+// import ToDoList from "./ToDoList";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -59,7 +59,7 @@ const HomePage = () => {
                 </Col>
                 <Col>
                     <Card className="card border-info mb-3" style={{ width: '30em', height: '18rem', marginLeft: '50px' }}>
-                        <Card.Body><ToDoList/></Card.Body>
+                        <Card.Body></Card.Body>
                     </Card>
                 </Col>
             </Row> 

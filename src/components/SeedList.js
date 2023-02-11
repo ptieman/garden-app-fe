@@ -78,8 +78,11 @@ const SeedList = () => {
     };
 
     return (
-        <div>
+        <Container>
           <h2>Seed List</h2>
+          <Row>
+            <Col>
+            <Card class="card border-info mb-3" style={{width: '300px'}}>
           <form onSubmit={handleAddSeed}>
             <div>
               <label htmlFor="seedName">Seed Name:</label>
@@ -141,31 +144,34 @@ const SeedList = () => {
                 </select>
               
             </div>
-            <button type="submit">Add Seed</button>
+            <button class="btn btn-secondary" type="submit">Add Seed</button>
           </form>
-          <table>
+          </Card>
+          </Col>
+          <Col>
+          <Card class="card border-info mb-3">
+          <table style= {{width: '750px', textAlign: 'center'}}>
             <thead>
               <tr>
-                <th>Seed Name</th>
-                <th>Seed Description</th>
-                <th>Days till Harvest</th>
-                <th>Plant Spacing</th>
-                <th>Sun Requirements</th>
-                <th>Sow Method</th>
-                <th>Actions</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Days Until Harvest</th>
+                <th scope="col">Spacing</th>
+                <th scope="col">Sun Requirements</th>
+                <th scope="col">Sow Method</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody style={{textAlign: 'center'}}>
               {seeds.map((seed) => (
                 <tr key={seed.id}>
-                  <td>{seed.seed_name}</td>
+                  <td >{seed.seed_name}</td>
                   <td>{seed.seed_description}</td>
                   <td>{seed.days_till_harvest}</td>
                   <td>{seed.plant_spacing}</td>
                   <td>{seed.sun_requirements}</td>
                   <td>{seed.sow_method}</td>
                   <td>
-                    <button onClick={() => handleDeleteSeed(seed.id)}>
+                    <button class="btn btn-outline-secondary" onClick={() => handleDeleteSeed(seed.id)}>
                       Delete
                     </button>
                   </td>
@@ -173,7 +179,10 @@ const SeedList = () => {
               ))}
                   </tbody>
                   </table>
-                  </div>
+                  </Card>
+                  </Col>
+                  </Row>
+                  </Container>
                   
             )
               };

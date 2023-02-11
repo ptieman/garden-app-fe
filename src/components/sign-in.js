@@ -1,6 +1,8 @@
 
 import React from "react"
 
+
+// when button is pressed - go to homepage
 function SignIn() {
     return (
 
