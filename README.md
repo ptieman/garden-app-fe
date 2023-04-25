@@ -1,4 +1,4 @@
-GROW SMART 
+GROW SMART (Front-End)
 
 A garden planning application meant to creata a single source for gardeners to plan and prepare their gardens. 
 
